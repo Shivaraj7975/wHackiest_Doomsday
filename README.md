@@ -261,12 +261,12 @@ Open-Meteo needs no key: it is free for non-commercial use, up to 10,000 calls a
 
 ## Team
 
-| Member | Role |
-| --- | --- |
-| [Name] (Lead) | SmartTrip agent, MCP client and integration |
-| [Name] | RoadTrip MCP server and the trip engine |
-| [Name] | React app, map and live dashboard |
-| [Name] | OAuth, Calendar and Gmail MCP, database, deployment |
+| Member |
+| --- |
+| Kushvendra Singh Rathore (Lead) |
+| Shivaraj Shegunasi |
+| Ayush Ojha |
+| Saish Kelvekar |
 
 ## Acknowledgements
 
