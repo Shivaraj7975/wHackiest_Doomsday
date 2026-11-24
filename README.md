@@ -154,7 +154,7 @@ Everything is written in JavaScript. No hardware is used.
 
 ## Project structure
 
-Planned layout (npm workspaces):
+Planned layout (Expected):
 
 ```
 roadtrip-ai/
@@ -170,56 +170,6 @@ roadtrip-ai/
 └── package.json
 ```
 
-## Getting started
-
-> These steps describe the intended setup. They will work once the first code is pushed.
-
-### Prerequisites
-
-- Node.js 22 LTS or newer, and npm
-- A Supabase project with the PostGIS extension enabled
-- A Google Cloud project with these APIs enabled: Maps JavaScript API, Places API (New), Routes API, the Maps agent tools (MCP), Gmail API and Google Calendar API
-- A Google OAuth consent screen in **Testing** mode, with your team added as test users
-- API keys for Anthropic, openrouteservice, TollGuru and LiteAPI (sandbox)
-
-### Install and run
-
-```bash
-git clone https://github.com/<your-username>/roadtrip-ai.git
-cd roadtrip-ai
-npm install
-cp .env.example .env    # fill in the variables listed below
-npm run db:migrate      # create tables and enable PostGIS
-npm run dev             # start the web app, API and RoadTrip MCP together
-```
-
-The web app runs at `http://localhost:5173` (Vite's default). The API and RoadTrip MCP ports come from `.env`.
-
-To try RoadTrip MCP on its own, open the MCP Inspector and connect it to the server's `/mcp` URL:
-
-```bash
-npx @modelcontextprotocol/inspector
-```
-
-## Environment variables
-
-| Variable | Used by | Notes |
-| --- | --- | --- |
-| `ANTHROPIC_API_KEY` | api | Claude |
-| `DATABASE_URL` | api, roadtrip-mcp | Supabase PostgreSQL connection string |
-| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | api | Google OAuth web client |
-| `GOOGLE_REDIRECT_URI` | api | for example `http://localhost:4000/auth/google/callback` |
-| `GOOGLE_MAPS_SERVER_KEY` | api, roadtrip-mcp | Places API, Routes API and the Maps MCP server; restrict it by API |
-| `VITE_GOOGLE_MAPS_BROWSER_KEY` | web | Maps JavaScript API; restrict it by HTTP referrer |
-| `ORS_API_KEY` | roadtrip-mcp | openrouteservice optimization (VROOM) |
-| `TOLLGURU_API_KEY` | roadtrip-mcp | tolls and fuel costs |
-| `LITEAPI_API_KEY` | api | sandbox keys start with `sandbox_` |
-| `TOKEN_ENCRYPTION_KEY` | api | 32-byte key for AES-256-GCM token encryption |
-| `SESSION_SECRET` | api | signs session cookies |
-| `ROADTRIP_MCP_URL` | api | for example `http://localhost:4100/mcp` |
-| `CALENDAR_MCP_URL`, `GMAIL_MCP_URL` | api | where the open-source MCP servers run |
-
-Open-Meteo needs no key: it is free for non-commercial use, up to 10,000 calls a day.
 
 ## Privacy and safety
 
@@ -231,24 +181,6 @@ Open-Meteo needs no key: it is free for non-commercial use, up to 10,000 calls a
 - A replan never changes a confirmed booking unless the user allows it.
 - Users can view, correct or delete their visited places, preferences and connected accounts.
 
-## Roadmap
-
-**24-hour MVP**
-
-- [ ] Car road trips, end to end
-- [ ] Group dates via Google Calendar MCP (free/busy)
-- [ ] Booking import via Gmail MCP (read-only)
-- [ ] RoadTrip MCP: `plan_trip` → `validate_plan` → `estimate_budget`
-- [ ] 3 explained options and the route map
-- [ ] Live demo: a rain alert triggers an instant replan
-
-**Next**
-
-- [ ] Two-wheeler, train, bus and plane modes
-- [ ] Offline trip pack
-- [ ] Preference learning and visited-place history
-- [ ] Live traffic and disruption feeds
-- [ ] Expense tracking and group cost splitting
 
 ## Known limitations
 
